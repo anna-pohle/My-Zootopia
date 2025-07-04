@@ -32,12 +32,12 @@ def serialize_animal(animal_obj):
         pass
     animal_info += "<p class='card__text'>"
     try:
-        diet = animal_obj['taxonomy']['order']
+        diet = animal_obj['characteristics']['order']
         animal_info += f"<strong>Diet:</strong> {diet}<br/>\n"
     except KeyError:
         pass
     try:
-        location = ", ".join(animal_obj['locations'])
+        location = animal_obj['locations'][0]
         animal_info += f"<strong>Location:</strong> {location}<br/>\n"
     except KeyError:
         pass
@@ -47,7 +47,7 @@ def serialize_animal(animal_obj):
     except KeyError:
         pass
     animal_info += "</p></li>"
-    return(animal_info)
+    return animal_info
 
 
 def main():
